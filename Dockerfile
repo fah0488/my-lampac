@@ -1,3 +1,6 @@
 FROM ghcr.io/lampac-nextgen/lampac:latest
+
 USER root
-RUN echo '{"listen": {"host": "0.0.0.0", "port": 9118}}' > /lampac/init.conf && chmod -R 777 /lampac
+RUN echo '{"host": "0.0.0.0", "port": 9118}' > init.conf && \
+    cp init.conf /lampac/init.conf || true && \
+    cp init.conf /app/init.conf || true
